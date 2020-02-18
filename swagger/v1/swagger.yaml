@@ -1,0 +1,67 @@
+---
+openapi: 3.0.1
+info:
+  title: API V1
+  version: v1
+paths:
+  "/api/v1/notes":
+    post:
+      summary: Creates a note
+      tags:
+      - Notes
+      consumes:
+      - application/json
+      - application/xml
+      parameters:
+      - name: note
+        in: body
+        schema:
+          type: object
+          properties:
+            name:
+              type: string
+            photo_url:
+              type: string
+            status:
+              type: string
+          required:
+          - name
+          - status
+      responses:
+        '201':
+          description: note created
+        '422':
+          description: invalid request
+  "/api/v1/notes/{id}":
+    get:
+      summary: Retrieves a note
+      tags:
+      - Notes
+      produces:
+      - application/json
+      - application/xml
+      parameters:
+      - name: id
+        in: path
+        type: string
+        required: true
+      responses:
+        '200':
+          description: name found
+          schema:
+            type: object
+            properties:
+              id:
+                type: integer
+              name:
+                type: string
+              photo_url:
+                type: string
+              status:
+                type: string
+            required:
+            - id
+            - name
+            - status
+        '404':
+          description: note not found

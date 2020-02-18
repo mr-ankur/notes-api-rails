@@ -3,7 +3,7 @@ class Api::V1::NotesController < ApplicationController
 
   # GET /api/v1/notes
   def index
-    @api_v1_notes = Api::V1::Note.all
+    @api_v1_notes = Note.all
 
     render json: @api_v1_notes
   end
@@ -15,7 +15,7 @@ class Api::V1::NotesController < ApplicationController
 
   # POST /api/v1/notes
   def create
-    @api_v1_note = Api::V1::Note.new(api_v1_note_params)
+    @api_v1_note = Note.new(api_v1_note_params)
 
     if @api_v1_note.save
       render json: @api_v1_note, status: :created, location: @api_v1_note
@@ -41,11 +41,21 @@ class Api::V1::NotesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_api_v1_note
-      @api_v1_note = Api::V1::Note.find(params[:id])
+      @api_v1_note = Note.find(params[:id])
     end
 
     # Only allow a trusted parameter "white list" through.
     def api_v1_note_params
-      params.fetch(:api_v1_note, {})
+      raise params.to_yaml
+      # params.fetch(:api_v1_note, {})
+      p "=============================="
+      p "=============================="
+      p "=============================="
+      p params
+      p "=============================="
+      p "=============================="
+      p "=============================="
+      p "=============================="
+      # params.require(:note).permit(:type,:description,:status)
     end
 end

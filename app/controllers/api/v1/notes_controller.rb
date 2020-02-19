@@ -1,5 +1,15 @@
 class Api::V1::NotesController < ApplicationController
   before_action :set_note, only: [:show, :update, :destroy]
+  swagger_controller :notes, "Notes Management"
+
+  swagger_api :create do
+   summary "To create user"
+   notes "Implementation notes, such as required params, example queries for apis are written here."
+   param :form, "note[description]", :string, :required, "Name of user"
+   param :form, "note[status]", :string, :optional, "Age of user"
+   response :success
+   response :unprocessable_entity
+ end
 
   # GET /api/v1/notes
   def index

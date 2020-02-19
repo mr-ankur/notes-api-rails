@@ -3,7 +3,10 @@
   "swaggerVersion": "1.2",
   "basePath": "http://localhost:3000",
   "apis": [
-
+    {
+      "path": "/docs/api/v1/notes.{format}",
+      "description": "Notes Management"
+    }
   ],
   "authorizations": null
 }

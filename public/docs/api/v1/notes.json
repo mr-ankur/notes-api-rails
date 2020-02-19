@@ -8,21 +8,74 @@
       "path": "/api/v1/notes",
       "operations": [
         {
-          "summary": "To create user",
+          "summary": "Get all the notes",
+          "notes": "Should be used for fetching all notes",
+          "parameters": [
+            {
+              "paramType": "header",
+              "name": "Authoraization",
+              "type": "string",
+              "description": "Authoraization",
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 200,
+              "responseModel": null,
+              "message": "Success"
+            },
+            {
+              "code": 401,
+              "responseModel": null,
+              "message": "Unauthorized"
+            }
+          ],
+          "nickname": "Api::V1::Notes#index",
+          "method": "get"
+        }
+      ]
+    },
+    {
+      "path": "/api/v1/notes",
+      "operations": [
+        {
+          "summary": "To create note",
           "notes": "Implementation notes, such as required params, example queries for apis are written here.",
           "parameters": [
             {
               "paramType": "form",
-              "name": "note[description]",
+              "name": "note[user_id]",
+              "type": "integer",
+              "description": "User id of note",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "note[label]",
               "type": "string",
-              "description": "Name of user",
+              "description": "Label of note",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "note[title]",
+              "type": "string",
+              "description": "Title of note",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "note[body]",
+              "type": "text",
+              "description": "Body of note",
               "required": true
             },
             {
               "paramType": "form",
               "name": "note[status]",
               "type": "string",
-              "description": "Age of user",
+              "description": "Status of note",
               "required": false
             }
           ],
@@ -40,6 +93,152 @@
           ],
           "nickname": "Api::V1::Notes#create",
           "method": "post"
+        }
+      ]
+    },
+    {
+      "path": "/api/v1/notes/{id}",
+      "operations": [
+        {
+          "summary": "Get a notes",
+          "notes": "Should be used for fetching a note",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "integer",
+              "description": null,
+              "required": false
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 200,
+              "responseModel": null,
+              "message": "Success"
+            },
+            {
+              "code": 401,
+              "responseModel": null,
+              "message": "Unauthorized"
+            },
+            {
+              "code": 404,
+              "responseModel": null,
+              "message": "Not Found"
+            }
+          ],
+          "nickname": "Api::V1::Notes#show",
+          "method": "get"
+        }
+      ]
+    },
+    {
+      "path": "/api/v1/notes/{id}",
+      "operations": [
+        {
+          "summary": "Edit the note",
+          "notes": "Should be used for editing a note",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "integer",
+              "description": "Note Id",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "note[user_id]",
+              "type": "integer",
+              "description": "User id of note",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "note[label]",
+              "type": "string",
+              "description": "Label of note",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "note[title]",
+              "type": "string",
+              "description": "Title of note",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "note[body]",
+              "type": "text",
+              "description": "Body of note",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "note[status]",
+              "type": "string",
+              "description": "Status of note",
+              "required": false
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 401,
+              "responseModel": null,
+              "message": "Unauthorized"
+            },
+            {
+              "code": 404,
+              "responseModel": null,
+              "message": "Not Found"
+            },
+            {
+              "code": 406,
+              "responseModel": null,
+              "message": "Not Acceptable"
+            }
+          ],
+          "nickname": "Api::V1::Notes#update",
+          "method": "patch"
+        }
+      ]
+    },
+    {
+      "path": "/api/v1/notes/{id}",
+      "operations": [
+        {
+          "summary": "Destroy the note",
+          "notes": "Should be used for destroying a note",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "string",
+              "description": null,
+              "required": false
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 200,
+              "responseModel": null,
+              "message": "Success"
+            },
+            {
+              "code": 401,
+              "responseModel": null,
+              "message": "Unauthorized"
+            },
+            {
+              "code": 404,
+              "responseModel": null,
+              "message": "Not Found"
+            }
+          ],
+          "nickname": "Api::V1::Notes#destroy",
+          "method": "delete"
         }
       ]
     }

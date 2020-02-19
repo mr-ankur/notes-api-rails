@@ -3,13 +3,52 @@ class Api::V1::NotesController < ApplicationController
   swagger_controller :notes, "Notes Management"
 
   swagger_api :create do
-   summary "To create user"
+   summary "To create note"
    notes "Implementation notes, such as required params, example queries for apis are written here."
-   param :form, "note[description]", :string, :required, "Name of user"
-   param :form, "note[status]", :string, :optional, "Age of user"
+   param :form, "note[user_id]", :integer, :required, "User id of note"
+   param :form, "note[label]", :string, :required, "Label of note"
+   param :form, "note[title]", :string, :required, "Title of note"
+   param :form, "note[body]", :text, :required, "Body of note"
+   param :form, "note[status]", :string, :optional, "Status of note"
    response :success
    response :unprocessable_entity
  end
+ swagger_api :show do
+   summary 'Get a notes'
+   notes 'Should be used for fetching a note'
+   param :path, :id, :integer, :id
+   response :unauthorized
+   response :not_found
+   response :ok, "Success"
+ end
+ swagger_api :index do
+      summary 'Get all the notes'
+      notes 'Should be used for fetching all notes'
+      param :header, :Authoraization, :string, :required, 'Authoraization'
+      response :unauthorized
+      response :ok, "Success"
+end
+ swagger_api :update do
+       summary 'Edit the note'
+       notes 'Should be used for editing a note'
+       param :path, :id, :integer, :required, "Note Id"
+       param :form, "note[user_id]", :integer, :required, "User id of note"
+       param :form, "note[label]", :string, :required, "Label of note"
+       param :form, "note[title]", :string, :required, "Title of note"
+       param :form, "note[body]", :text, :required, "Body of note"
+       param :form, "note[status]", :string, :optional, "Status of note"
+       response :unauthorized
+       response :not_found
+       response :not_acceptable
+  end
+ swagger_api :destroy do
+       summary 'Destroy the note'
+       notes 'Should be used for destroying a note'
+       param :path, :id, :string, :id
+       response :unauthorized
+       response :not_found
+       response :ok, "Success"
+  end
 
   # GET /api/v1/notes
   def index
@@ -23,7 +62,7 @@ class Api::V1::NotesController < ApplicationController
     render json: @note
   end
 
-  # POST /api/v1/notes
+  # note /api/v1/notes
   def create
     @note = Note.new(note_params)
 
@@ -56,6 +95,12 @@ class Api::V1::NotesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def note_params
-      params.require(:note).permit(:description,:status,:user_id)
+      p "-======================================"
+      p "-======================================"
+      p "-======================================"
+      p params
+      p "-======================================"
+      p "-======================================"
+      params.require(:note).permit(:user_id,:body,:label,:title,:status,:note_id)
     end
 end

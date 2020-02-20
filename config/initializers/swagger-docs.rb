@@ -12,7 +12,6 @@ Swagger::Docs::Config.register_apis({
     controller_base_path: '',
     api_file_path: 'public/docs',
     base_path: 'http://localhost:3000',
-    # base_path: 'https://react-mayhem.herokuapp.com',
     clean_directory: true
   }
 })

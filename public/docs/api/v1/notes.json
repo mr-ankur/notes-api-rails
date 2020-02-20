@@ -9,7 +9,6 @@
       "operations": [
         {
           "summary": "Get all the notes",
-          "notes": "Should be used for fetching all notes",
           "parameters": [
             {
               "paramType": "header",
@@ -31,6 +30,7 @@
               "message": "Unauthorized"
             }
           ],
+          "notes": "Should be used for fetching all notes",
           "nickname": "Api::V1::Notes#index",
           "method": "get"
         }
@@ -41,7 +41,6 @@
       "operations": [
         {
           "summary": "To create note",
-          "notes": "Implementation notes, such as required params, example queries for apis are written here.",
           "parameters": [
             {
               "paramType": "form",
@@ -91,6 +90,7 @@
               "message": "Unprocessable Entity"
             }
           ],
+          "notes": "Implementation notes, such as required params, example queries for apis are written here.",
           "nickname": "Api::V1::Notes#create",
           "method": "post"
         }
@@ -101,7 +101,6 @@
       "operations": [
         {
           "summary": "Get a notes",
-          "notes": "Should be used for fetching a note",
           "parameters": [
             {
               "paramType": "path",
@@ -128,6 +127,7 @@
               "message": "Not Found"
             }
           ],
+          "notes": "Should be used for fetching a note",
           "nickname": "Api::V1::Notes#show",
           "method": "get"
         }
@@ -138,7 +138,6 @@
       "operations": [
         {
           "summary": "Edit the note",
-          "notes": "Should be used for editing a note",
           "parameters": [
             {
               "paramType": "path",
@@ -200,6 +199,7 @@
               "message": "Not Acceptable"
             }
           ],
+          "notes": "Should be used for editing a note",
           "nickname": "Api::V1::Notes#update",
           "method": "patch"
         }
@@ -210,7 +210,6 @@
       "operations": [
         {
           "summary": "Destroy the note",
-          "notes": "Should be used for destroying a note",
           "parameters": [
             {
               "paramType": "path",
@@ -237,6 +236,7 @@
               "message": "Not Found"
             }
           ],
+          "notes": "Should be used for destroying a note",
           "nickname": "Api::V1::Notes#destroy",
           "method": "delete"
         }

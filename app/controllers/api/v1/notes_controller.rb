@@ -95,12 +95,6 @@ end
 
     # Only allow a trusted parameter "white list" through.
     def note_params
-      p "-======================================"
-      p "-======================================"
-      p "-======================================"
-      p params
-      p "-======================================"
-      p "-======================================"
       params.require(:note).permit(:user_id,:body,:label,:title,:status,:note_id)
     end
 end

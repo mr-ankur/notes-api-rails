@@ -4,6 +4,18 @@
   "basePath": "http://localhost:3000",
   "apis": [
     {
+      "path": "/docs/sessions.{format}",
+      "description": "Registration Management"
+    },
+    {
+      "path": "/docs/passwords.{format}",
+      "description": "Registration Management"
+    },
+    {
+      "path": "/docs/registrations.{format}",
+      "description": "Registration Management"
+    },
+    {
       "path": "/docs/api/v1/notes.{format}",
       "description": "Notes Management"
     }

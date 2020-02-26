@@ -9,15 +9,6 @@
       "operations": [
         {
           "summary": "Get all the notes",
-          "parameters": [
-            {
-              "paramType": "header",
-              "name": "Authoraization",
-              "type": "string",
-              "description": "Authoraization",
-              "required": true
-            }
-          ],
           "responseMessages": [
             {
               "code": 200,

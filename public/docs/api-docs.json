@@ -5,11 +5,11 @@
   "apis": [
     {
       "path": "/docs/sessions.{format}",
-      "description": "Registration Management"
+      "description": "Session Management"
     },
     {
       "path": "/docs/passwords.{format}",
-      "description": "Registration Management"
+      "description": "Password Management"
     },
     {
       "path": "/docs/registrations.{format}",

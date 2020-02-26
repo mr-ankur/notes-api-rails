@@ -1,54 +1,54 @@
 class Api::V1::NotesController < ApplicationController
   before_action :set_note, only: [:show, :update, :destroy]
+  skip_before_action :authenticate_user!, only: [:new, :create, :index, :show]
   swagger_controller :notes, "Notes Management"
 
-  swagger_api :create do
-   summary "To create note"
-   notes "Implementation notes, such as required params, example queries for apis are written here."
-   param :form, "note[user_id]", :integer, :required, "User id of note"
-   param :form, "note[label]", :string, :required, "Label of note"
-   param :form, "note[title]", :string, :required, "Title of note"
-   param :form, "note[body]", :text, :required, "Body of note"
-   param :form, "note[status]", :string, :optional, "Status of note"
-   response :success
-   response :unprocessable_entity
- end
- swagger_api :show do
-   summary 'Get a notes'
-   notes 'Should be used for fetching a note'
-   param :path, :id, :integer, :id
-   response :unauthorized
-   response :not_found
-   response :ok, "Success"
- end
- swagger_api :index do
-      summary 'Get all the notes'
-      notes 'Should be used for fetching all notes'
-      param :header, :Authoraization, :string, :required, 'Authoraization'
+   swagger_api :create do
+     summary "To create note"
+     notes "Implementation notes, such as required params, example queries for apis are written here."
+     param :form, "note[user_id]", :integer, :required, "User id of note"
+     param :form, "note[label]", :string, :required, "Label of note"
+     param :form, "note[title]", :string, :required, "Title of note"
+     param :form, "note[body]", :text, :required, "Body of note"
+     param :form, "note[status]", :string, :optional, "Status of note"
+     response :success
+     response :unprocessable_entity
+   end
+   swagger_api :show do
+     summary 'Get a notes'
+     notes 'Should be used for fetching a note'
+     param :path, :id, :integer, :id
+     response :unauthorized
+     response :not_found
+     response :ok, "Success"
+   end
+   swagger_api :index do
+     summary 'Get all the notes'
+     notes 'Should be used for fetching all notes'
+     response :unauthorized
+     response :ok, "Success"
+   end
+   swagger_api :update do
+     summary 'Edit the note'
+     notes 'Should be used for editing a note'
+     param :path, :id, :integer, :required, "Note Id"
+     param :form, "note[user_id]", :integer, :required, "User id of note"
+     param :form, "note[label]", :string, :required, "Label of note"
+     param :form, "note[title]", :string, :required, "Title of note"
+     param :form, "note[body]", :text, :required, "Body of note"
+     param :form, "note[status]", :string, :optional, "Status of note"
+     response :unauthorized
+     response :not_found
+     response :not_acceptable
+    end
+    swagger_api :destroy do
+      summary 'Destroy the note'
+      notes 'Should be used for destroying a note'
+      param :path, :id, :string, :id
       response :unauthorized
+      response :not_found
       response :ok, "Success"
-end
- swagger_api :update do
-       summary 'Edit the note'
-       notes 'Should be used for editing a note'
-       param :path, :id, :integer, :required, "Note Id"
-       param :form, "note[user_id]", :integer, :required, "User id of note"
-       param :form, "note[label]", :string, :required, "Label of note"
-       param :form, "note[title]", :string, :required, "Title of note"
-       param :form, "note[body]", :text, :required, "Body of note"
-       param :form, "note[status]", :string, :optional, "Status of note"
-       response :unauthorized
-       response :not_found
-       response :not_acceptable
-  end
- swagger_api :destroy do
-       summary 'Destroy the note'
-       notes 'Should be used for destroying a note'
-       param :path, :id, :string, :id
-       response :unauthorized
-       response :not_found
-       response :ok, "Success"
-  end
+    end
 
   # GET /api/v1/notes
   def index

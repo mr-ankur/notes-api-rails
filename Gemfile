@@ -12,6 +12,7 @@ gem 'puma', '~> 3.11'
 gem 'swagger-docs'
 gem 'openapi'
 gem 'devise'
+gem 'devise_lastseenable'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 # gem 'jbuilder', '~> 2.7'
 # Use Redis adapter to run Action Cable in production
@@ -39,6 +40,7 @@ group :development do
   gem 'spring'
   gem 'rspec-rails'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'bullet', '6.1.0'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

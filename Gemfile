@@ -41,6 +41,7 @@ group :development do
   gem 'rspec-rails'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'bullet', '6.1.0'
+  gem 'dotenv-rails', :require => 'dotenv/rails-now'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

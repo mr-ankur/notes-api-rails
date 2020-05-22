@@ -11,7 +11,7 @@ Swagger::Docs::Config.register_apis({
   '1.0' => {
     controller_base_path: '',
     api_file_path: 'public/docs',
-    base_path: ENV['BASE_PATH'],
+    base_path: ENV['BASE_PATH'] || 'https://notesapirails.herokuapp.com',
     clean_directory: true
   }
 })
